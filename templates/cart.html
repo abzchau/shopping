@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+    <ul>
+        {% for message in get_flashed_messages() %}
+        <li>{{message}}</li>
+        {% endfor %}
+    </ul>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Melon Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+            {% for order_line in order_lines:  %}
+        <tr>
+            <td>{{order_line['melon_name']}}</td>
+            <td>{{order_line['quantity']}}</td>
+            <td>{{order_line['price']}}</td>
+            <td>{{order_line['total']}}</td>
+            
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+         
+    <h3>Total: {{ final }}</h3>
+            
+    <a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
+
+{% endblock %}
